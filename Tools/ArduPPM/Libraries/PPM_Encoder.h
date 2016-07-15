@@ -198,7 +198,7 @@ const char ver[15] = "ArduPPMv2.3.17";
 #define SPEKTRUM_MODE         4    // Reserved for Spektrum satelitte on channel 1
 
 // Servo input mode (jumper (default), pwm, ppm, jeti or spektrum)
-volatile uint8_t servo_input_mode = JUMPER_SELECT_MODE;
+volatile uint8_t servo_input_mode = SERVO_PWM_MODE;
 
 // -------------------------------------------------------------
 // FAILSAFE MODE
@@ -428,6 +428,7 @@ void EVENT_USB_Device_Disconnect(void)
 #define PPM_COMPARE_ENABLE    OCIE1B
 #define PPM_COMPARE_FORCE_MATCH    FOC1B
 
+#define LED_OUTPUT_PIN        PB5
 #else
 #error NO SUPPORTED DEVICE FOUND! (ATmega16u2 / ATmega32u2 / ATmega328p)
 #endif

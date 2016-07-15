@@ -66,6 +66,9 @@ size: ${TARGET}
 	@echo
 	@avr-size -C --mcu=${MCU} ${TARGET}
 
+load: $(TARGET:elf=hex) $(TARGET:elf=eep)
+	avrdude -V -c arduino -p ATMEGA328P -P /dev/ttyACM0 -b 57600 -U flash:w:$(TARGET:elf=hex) -U eeprom:w:$(TARGET:elf=eep)
+
 ## Clean target
 .PHONY: clean
 clean:
